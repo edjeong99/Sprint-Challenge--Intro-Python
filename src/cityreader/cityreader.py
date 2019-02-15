@@ -6,17 +6,11 @@ import csv
 
 
 class City:
-    def __init__(self, city, state_name, county_name, lat, lng, population, density, timezone, zips):
+    def __init__(self, name, lat, lon):
 
-        self.city = city
-        self.state_name = state_name
-        self.county_name = county_name
-        self.lat = lat
-        self.lng = lng
-        self.population = population
-        self.density = density
-        self.timezone = timezone
-        self.zips = zips
+        self.name = name
+        self.lat = float(lat)
+        self.lon = float(lon)
 
 
 # We have a collection of US cities with population over 750,000 stored in the
@@ -43,8 +37,7 @@ def cityreader(cities=[]):
         file_read = csv.reader(file, delimiter=',')
         next(file_read)  # exclude first row
         for row in file_read:
-            cities.append(City(row[0], row[1], row[2], row[3],
-                               row[4], row[5], row[6], row[7], row[8]))
+            cities.append(City(row[0], row[3], row[4]))
         return cities
 
 
@@ -52,7 +45,7 @@ cityreader(cities)
 
 # Print the list of cities (name, lat, lon), 1 record per line.
 for c in cities:
-    print(c.city)
+    print(c)
 
 # STRETCH GOAL!
 #
