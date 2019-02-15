@@ -43,5 +43,5 @@ class Car(GroundVehicle):
     pass
 
 
-class Car(Motorcycle):
+class Motorcycle(GroundVehicle):
     pass
